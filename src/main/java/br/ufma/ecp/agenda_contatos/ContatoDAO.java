@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContatoDAO {
 	private Connection conn;
@@ -47,6 +49,25 @@ public class ContatoDAO {
 		}
 	}
 	
+	public List<Contato> recuperarContato() {
+		try {
+			List<Contato> result = new ArrayList<Contato>();
+			String sql = "select * from contato";
+			stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				result.add(new Contato(rs.getString("nome"), rs.getString("email"), rs.getString("telefone")));
+				//System.out.println("Nome: " + rs.getString("nome"));
+				//System.out.println("Email: " + rs.getString("email"));
+			}
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/*
 	public void buscaDados() {
 		try {
 			String sql = "select * from contato";
@@ -59,6 +80,6 @@ public class ContatoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 }

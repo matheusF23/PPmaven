@@ -36,4 +36,11 @@ public class Contato {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
+	@Override
+	public String toString() {
+		return "Contato [nome=" + this.getNome() + ", email=" + this.getEmail() + ", phone=" + this.getPhone() + "]";
+	}
+	
+	
 }
