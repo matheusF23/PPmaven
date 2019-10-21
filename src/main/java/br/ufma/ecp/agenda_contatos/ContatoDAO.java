@@ -11,9 +11,9 @@ import java.util.List;
 public class ContatoDAO {
 	private Connection conn;
 	private PreparedStatement stmt;
+	private String url = "jdbc:mysql://localhost/agenda?user=root&password=1234&useTimezone=true&serverTimezone=UTC";
 	
 	public ContatoDAO() {
-		String url = "jdbc:mysql://localhost/agenda?user=root&password=1234&useTimezone=true&serverTimezone=UTC";
 		try {
 			// Conectando com o banco
 			conn = DriverManager.getConnection(url);
@@ -57,8 +57,6 @@ public class ContatoDAO {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				result.add(new Contato(rs.getString("nome"), rs.getString("email"), rs.getString("telefone")));
-				//System.out.println("Nome: " + rs.getString("nome"));
-				//System.out.println("Email: " + rs.getString("email"));
 			}
 			return result;
 		} catch (SQLException e) {
