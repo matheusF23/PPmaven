@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -76,7 +77,7 @@ public class FrameContato extends JFrame {
 
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				btnSairActionPerformed(e);
 			}
 		});
 
@@ -89,7 +90,7 @@ public class FrameContato extends JFrame {
 
 		jpnTelefone.add(lblTelefone);
 		jpnTelefone.add(txtTelefone);
-		
+
 		jpnButton.add(btnCadastrar);
 		jpnButton.add(btnLimpar);
 		jpnButton.add(btnSair);
@@ -98,8 +99,14 @@ public class FrameContato extends JFrame {
 		add(jpnEmail);
 		add(jpnTelefone);
 		add(jpnButton);
-		
+	}
 
+	private void btnSairActionPerformed(ActionEvent ev) {
+		int confirm = JOptionPane.showConfirmDialog(this, "Deseja realemente fechar a aplicação?",
+				"Sair - Contirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		if (confirm == JOptionPane.YES_OPTION) {
+			System.exit(1);
+		}
 	}
 
 }
