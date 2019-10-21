@@ -6,6 +6,13 @@ public class Contato {
 	private String email;
 	private String phone;
 	
+	public Contato(String nome, String email, String phone) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.phone = phone;
+	}	
+	
 	public String getNome() {
 		return nome;
 	}
@@ -29,11 +36,4 @@ public class Contato {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	public Contato(String nome, String email, String phone) {
-		super();
-		this.nome = nome;
-		this.email = email;
-		this.phone = phone;
-	}	
 }
