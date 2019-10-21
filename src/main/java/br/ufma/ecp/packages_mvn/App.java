@@ -27,7 +27,8 @@ public class App {
 			
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				
+				System.out.println("Nome: " + rs.getString("nome"));
+				System.out.println("Email: " + rs.getString("email"));
 			}
 			
 			conn.close();
