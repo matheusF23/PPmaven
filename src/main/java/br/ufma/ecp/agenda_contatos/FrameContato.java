@@ -64,6 +64,7 @@ public class FrameContato extends JFrame {
 													// banco
 				dao.salvaNoBanco(contato); // salva os dados no banco
 				dao.desconectaBanco(); // Fecha conexao com o banco
+				btnCadastrarActionPerformed();
 			}
 		});
 
@@ -77,7 +78,7 @@ public class FrameContato extends JFrame {
 
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnSairActionPerformed(e);
+				btnSairActionPerformed();
 			}
 		});
 
@@ -101,12 +102,17 @@ public class FrameContato extends JFrame {
 		add(jpnButton);
 	}
 
-	private void btnSairActionPerformed(ActionEvent ev) {
+	private void btnSairActionPerformed() {
 		int confirm = JOptionPane.showConfirmDialog(this, "Deseja realemente fechar a aplicação?",
 				"Sair - Contirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if (confirm == JOptionPane.YES_OPTION) {
 			System.exit(1);
 		}
+	}
+	
+	private void btnCadastrarActionPerformed() {
+		JOptionPane.showMessageDialog(null, "Cadastro salvo com sucesso",
+				"Cadastro de contatos", JOptionPane.PLAIN_MESSAGE);
 	}
 
 }
