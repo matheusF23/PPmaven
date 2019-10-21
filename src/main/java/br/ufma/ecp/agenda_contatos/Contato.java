@@ -10,6 +10,8 @@ public class Contato {
 	private String nome;
 	private String email;
 	private String phone;
+	private Connection conn;
+	private PreparedStatement stmt;
 	
 	public Contato(String nome, String email, String phone) {
 		super();
@@ -18,30 +20,59 @@ public class Contato {
 		this.phone = phone;
 	}
 	
-	public void salvaNoBanco() {
-		Connection conn;
+	public void conectaBanco() {
 		String url = "jdbc:mysql://localhost/agenda?user=root&password=1234&useTimezone=true&serverTimezone=UTC";
 		try {
 			conn = DriverManager.getConnection(url);
 			System.out.println("Conectado com sucesso!");
-			
-			//String sql = "insert into contato (nome, email, telefone) values (?, ?, ?)";
-			String sql = "select * from contato";
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void desconectaBanco() {
+		try {
+			conn.close();
+			System.out.println("Conecção fechada.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void salvaNoBanco() {
+		try {
+			this.conectaBanco();
+			String sql = "insert into contato (nome, email, telefone) values (?, ?, ?)";
 
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			//stmt.setString(1,  "sergio");
-			//stmt.setString(2,  "skosta@gmail");
-			//stmt.setString(3,  "sergio");
-			//stmt.execute();
-			//stmt.close();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, nome);
+			stmt.setString(2, email);
+			stmt.setString(3, phone);
+			stmt.execute();
+			System.out.println("Adicionado com sucesso!");
+			stmt.close();
 			
+			this.desconectaBanco();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void buscaDados() {
+		try {
+			this.conectaBanco();
+			String sql = "select * from contato";
+			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				System.out.println("Nome: " + rs.getString("nome"));
 				System.out.println("Email: " + rs.getString("email"));
 			}
 			
-			conn.close();
+			this.desconectaBanco();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
