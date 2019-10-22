@@ -1,5 +1,6 @@
 package br.ufma.ecp.estante_livros;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,11 +38,15 @@ public class FrameLivro extends JFrame {
 	private JPanel jpnAutor;
 	private JPanel jpnButton;
 	private JPanel jpnButton1;
+	private JPanel jpnCN; // JPanel auxiliar para codigo e nome
+	private JPanel jpnCNA; // JPanel auxiliar para codigo e nome e autor
+	private JPanel jpnCNAB; // JPanel auxiliar para codigo e nome e autor e botoes
+	private JPanel jpnCNABB; // JPanel auxiliar para codigo e nome e autor e botoes 2
 
 	public FrameLivro() {
 		// Config Jframe
 		setTitle("Cadastro de Livros"); // Titulo
-		setSize(400, 250); // Tamanho
+		setSize(350, 180); // Tamanho
 		setLayout(new FlowLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE); // Fecha a aplicacao
 		setLocationRelativeTo(null); // Centraliza o Jframe
@@ -50,7 +55,7 @@ public class FrameLivro extends JFrame {
 		lblCodigo = new JLabel("Código: ");
 		lblNome = new JLabel("Nome do livro: ");
 		lblAutor = new JLabel("Nome do autor: ");
-		txtCodigo = new JTextField(5);
+		txtCodigo = new JTextField(20);
 		txtNome = new JTextField(20);
 		txtAutor = new JTextField(20);
 		btnCadastrar = new JButton("Cadastrar");
@@ -58,11 +63,16 @@ public class FrameLivro extends JFrame {
 		btnSair = new JButton("Sair");
 		btnMostraLivro = new JButton("Visualisar livros");
 
-		jpnCodigo = new JPanel();
-		jpnNome = new JPanel();
-		jpnAutor = new JPanel();
-		jpnButton = new JPanel();
-		jpnButton1 = new JPanel();
+		jpnCodigo = new JPanel(new BorderLayout());
+		jpnNome = new JPanel(new BorderLayout());
+		jpnAutor = new JPanel(new BorderLayout());
+		jpnButton = new JPanel(new FlowLayout());
+		jpnButton1 = new JPanel(new BorderLayout());
+		jpnCN = new JPanel(new BorderLayout());
+		jpnCNA = new JPanel(new BorderLayout());
+		jpnCNAB = new JPanel(new BorderLayout());
+		jpnCNABB = new JPanel(new BorderLayout());
+		
 
 		// Acoes aos botoes
 		btnCadastrar.addActionListener(new ActionListener() {
@@ -95,25 +105,31 @@ public class FrameLivro extends JFrame {
 		});
 
 		// Adicao de componentes ao JFrame
-		jpnCodigo.add(lblCodigo);
-		jpnCodigo.add(txtCodigo);
+		jpnCodigo.add(lblCodigo, BorderLayout.WEST);
+		jpnCodigo.add(txtCodigo, BorderLayout.EAST);
+		jpnCN.add(jpnCodigo, BorderLayout.NORTH);
 
-		jpnNome.add(lblNome);
-		jpnNome.add(txtNome);
+		jpnNome.add(lblNome, BorderLayout.WEST);
+		jpnNome.add(txtNome, BorderLayout.EAST);
+		jpnCN.add(jpnNome, BorderLayout.SOUTH);
 
-		jpnAutor.add(lblAutor);
-		jpnAutor.add(txtAutor);
+		jpnAutor.add(lblAutor, BorderLayout.WEST);
+		jpnAutor.add(txtAutor, BorderLayout.EAST);
+		jpnCNA.add(jpnCN, BorderLayout.NORTH);
+		jpnCNA.add(jpnAutor, BorderLayout.SOUTH);
 
-		jpnButton.add(btnCadastrar);
-		jpnButton.add(btnLimpar);
-		jpnButton.add(btnMostraLivro);
-		jpnButton1.add(btnSair);
+		jpnButton.add(btnCadastrar, BorderLayout.WEST);
+		jpnButton.add(btnLimpar, BorderLayout.CENTER);
+		jpnButton.add(btnMostraLivro, BorderLayout.EAST);
+		jpnCNAB.add(jpnCNA, BorderLayout.NORTH);
+		jpnCNAB.add(jpnButton, BorderLayout.SOUTH);
 
-		add(jpnCodigo);
-		add(jpnNome);
-		add(jpnAutor);
-		add(jpnButton);
-		add(jpnButton1);
+		jpnButton1.add(btnSair, BorderLayout.CENTER);
+		jpnCNABB.add(jpnCNAB, BorderLayout.NORTH);
+		jpnCNABB.add(jpnButton1, BorderLayout.SOUTH);
+
+		
+		add(jpnCNABB);
 	}
 
 	private void btnCadastrarActionPerformed() {
