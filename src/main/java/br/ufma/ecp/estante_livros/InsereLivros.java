@@ -1,14 +1,11 @@
 package br.ufma.ecp.estante_livros;
 
-import java.util.List;
-
 public class InsereLivros {
 
 	public static void main(String[] args) {
+		FrameLivro frame = new FrameLivro();
+		frame.setVisible(true);
 		
-		LivroDAO ldao = new LivroDAO();
-		List<Livro> livros = ldao.recuperarLivros();
-		System.out.println(livros);
 	}
 
 }
