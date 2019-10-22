@@ -17,7 +17,7 @@ public class LivroDAO {
 		try {
 			// Conectando com o banco
 			conn = DriverManager.getConnection(url);
-			System.out.println("Conectaxão ao banco bem sucedida!");
+			System.out.println("Conectado ao banco!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
