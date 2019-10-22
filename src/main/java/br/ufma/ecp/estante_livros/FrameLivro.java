@@ -73,6 +73,19 @@ public class FrameLivro extends JFrame {
 			}
 		});
 		
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtCodigo.setText("");
+				txtNome.setText("");
+				txtAutor.setText("");
+			}
+		});
+		
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnSairActionPerformed();
+			}
+		});
 		
 		
 		// Adicao de componentes ao JFrame
@@ -101,6 +114,14 @@ public class FrameLivro extends JFrame {
 	private void btnCadastrarActionPerformed() {
 		JOptionPane.showMessageDialog(null, "Cadastro salvo com sucesso",
 				"Cadastro de livros", JOptionPane.PLAIN_MESSAGE);
+	}
+	
+	private void btnSairActionPerformed() {
+		int confirm = JOptionPane.showConfirmDialog(this, "Deseja realemente fechar a aplicação?",
+				"Sair - Contirmação", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		if (confirm == JOptionPane.YES_OPTION) {
+			System.exit(1);
+		}
 	}
 
 }
