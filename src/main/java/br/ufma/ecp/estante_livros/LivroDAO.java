@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LivroDAO {
 	private Connection conn;
@@ -46,18 +48,20 @@ public class LivroDAO {
 		}
 	}
 	
-	public void buscaDados() {
+	public List<Livro> recuperarLivros() {
 		try {
+			List<Livro> result = new ArrayList<Livro>();
 			String sql = "select * from livros";
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				System.out.println("cogido: " + rs.getString("codigo"));
-				System.out.println("Nome: " + rs.getString("nome"));
+				result.add(new Livro(rs.getInt("codigo"), rs.getString("nome"), rs.getString("autor")));
 			}
+			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 }
