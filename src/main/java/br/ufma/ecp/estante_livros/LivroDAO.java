@@ -17,7 +17,7 @@ public class LivroDAO {
 		try {
 			// Conectando com o banco
 			conn = DriverManager.getConnection(url);
-			System.out.println("Conectado com sucesso!");
+			System.out.println("Conectaxão ao banco bem sucedida!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -26,6 +26,7 @@ public class LivroDAO {
 	public void desconectaBanco() {
 		try {
 			conn.close(); // fecha conexao com o banco
+			System.out.println("Desconexão com o banco bem sucedida!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
