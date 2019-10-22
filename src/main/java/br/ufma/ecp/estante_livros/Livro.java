@@ -38,7 +38,7 @@ public class Livro {
 
 	@Override
 	public String toString() {
-		return "Livro [codigo=" + this.getCodigo() + ", nome=" + this.getNome() + ", autor=" + this.getAutor() + "]";
+		return "[codigo = " + this.getCodigo() + ", nome = " + this.getNome() + ", autor = " + this.getAutor() + "]";
 	}
 	
 }
