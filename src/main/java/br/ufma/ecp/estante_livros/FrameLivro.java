@@ -50,7 +50,6 @@ public class FrameLivro extends JFrame {
 		lblCodigo = new JLabel("Código: ");
 		lblNome = new JLabel("Nome do livro: ");
 		lblAutor = new JLabel("Nome do autor: ");
-		// lblMostraLivros = new JLabel("Lista de Livros: ");
 		txtCodigo = new JTextField(5);
 		txtNome = new JTextField(20);
 		txtAutor = new JTextField(20);
@@ -115,8 +114,6 @@ public class FrameLivro extends JFrame {
 		add(jpnAutor);
 		add(jpnButton);
 		add(jpnButton1);
-		// add(lblMostraLivros);
-
 	}
 
 	private void btnCadastrarActionPerformed() {

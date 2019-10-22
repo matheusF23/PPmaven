@@ -31,7 +31,7 @@ public class LivroDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void salvaNoBanco(Livro livro) {
 		try {
 			String sql = "insert into livros (codigo, nome, autor) values (?, ?, ?)";
@@ -43,12 +43,12 @@ public class LivroDAO {
 			stmt.execute();
 			System.out.println("Adicionado com sucesso!");
 			stmt.close();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public List<Livro> recuperarLivros() {
 		try {
 			List<Livro> result = new ArrayList<Livro>();

@@ -4,7 +4,7 @@ public class Livro {
 	private int codigo;
 	private String nome;
 	private String autor;
-	
+
 	public Livro(int codigo, String nome, String autor) {
 		super();
 		this.codigo = codigo;
@@ -40,5 +40,4 @@ public class Livro {
 	public String toString() {
 		return "[codigo = " + this.getCodigo() + ", nome = " + this.getNome() + ", autor = " + this.getAutor() + "]";
 	}
-	
 }
