@@ -3,9 +3,11 @@ package br.ufma.ecp.estante_livros;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
-public class LivroTableModel extends AbstractTableModel {
+public class LivroTableModel extends AbstractTableModel implements TableModelListener{
 	/**
 	 * 
 	 */
@@ -18,6 +20,7 @@ public class LivroTableModel extends AbstractTableModel {
 		this.dao = dao;
 		this.livros = dao.readLivros();
 		colunas = Arrays.asList("Codigo", "Nome", "Autor");
+		this.addTableModelListener(this);
 	}
 
 	public int getRowCount() {
@@ -31,7 +34,8 @@ public class LivroTableModel extends AbstractTableModel {
 	public String getColumnName(int i) {
 		return colunas.get(i);
 	}
-
+	
+	// pega os valores na tabela
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Livro livro = livros.get(rowIndex);
 		switch (columnIndex) {
@@ -45,11 +49,13 @@ public class LivroTableModel extends AbstractTableModel {
 		return null;
 	}
 
+	//Permite fazer alteracoes na table
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return true;
 	}
-
+	
+	// altera o valor na tabela apos o enter
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		// Pega o livro referente a linha especificada
 		Livro livro = livros.get(rowIndex);
@@ -68,6 +74,13 @@ public class LivroTableModel extends AbstractTableModel {
 			throw new IndexOutOfBoundsException("columnIndex out of bounds");
 		}
 		fireTableCellUpdated(rowIndex, columnIndex); // Notifica a atualização da célula
+	}
+
+	public void tableChanged(TableModelEvent event) {
+		int i = event.getFirstRow();
+		Livro livro = livros.get(i);
+		System.out.println(i);
+		dao.update(livro);
 	}
 
 }

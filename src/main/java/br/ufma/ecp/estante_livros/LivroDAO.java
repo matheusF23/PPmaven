@@ -66,6 +66,20 @@ public class LivroDAO {
 		return livros;
 	}
 	
-	
+	public void update(Livro livro) {
+		String sql = "update livros set codigo = ?, nome = ?, autor = ? where codigo = ?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setLong(1, livro.getCodigo());
+			stmt.setString(2, livro.getNome());
+			stmt.setString(3, livro.getAutor());
+			stmt.setLong(4, livro.getCodigo());
+			stmt.execute();
+			System.out.println("Atualizado com sucesso!");
+			stmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }

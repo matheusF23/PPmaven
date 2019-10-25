@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -100,7 +99,8 @@ public class FrameLivro extends JFrame {
 
 		btnMostraLivro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnMostraLivroActionPerformed();
+				FrameTable frame = new FrameTable();
+				frame.setVisible(true);
 			}
 		});
 
@@ -144,22 +144,5 @@ public class FrameLivro extends JFrame {
 			dao.desconectaBanco(); // Fecha conexao com o banco
 			System.exit(1);
 		}
-	}
-
-	private String listLivros() {
-		List<Livro> livros = dao.readLivros();
-		String listLivros = "";
-		for (Livro l : livros) {
-			String temp = "Codigo: " + Integer.toString(l.getCodigo()) + ". Nome: " + l.getNome() + ". Autor: "
-					+ l.getAutor() + ".\n";
-			listLivros = listLivros + temp;
-		}
-		return listLivros;
-	}
-
-	private void btnMostraLivroActionPerformed() {
-		String livros = listLivros();
-
-		JOptionPane.showMessageDialog(null, livros, "Lista de livros", JOptionPane.PLAIN_MESSAGE);
 	}
 }

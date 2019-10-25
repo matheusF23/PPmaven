@@ -18,6 +18,6 @@ public class FrameTable extends JFrame {
 		JScrollPane scroll = new JScrollPane();
 		scroll.setViewportView(t);
 		add(scroll);
-		setSize(500, 150);
+		setSize(600, 250);
 	}
 }
