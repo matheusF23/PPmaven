@@ -77,7 +77,6 @@ public class FrameLivro extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				Livro livro = new Livro(Integer.parseInt(txtCodigo.getText()), txtNome.getText(), txtAutor.getText());
-
 				dao.salvaNoBanco(livro); // salva os dados no banco
 				btnCadastrarActionPerformed();
 			}

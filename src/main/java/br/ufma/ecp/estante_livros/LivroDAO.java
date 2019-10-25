@@ -59,7 +59,6 @@ public class LivroDAO {
 				livros.add(new Livro(rs.getInt("codigo"), rs.getString("nome"), rs.getString("autor")));
 			}
 			stmt.close();
-			//return livros;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
