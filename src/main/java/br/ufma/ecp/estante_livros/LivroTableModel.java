@@ -78,5 +78,4 @@ public class LivroTableModel extends AbstractTableModel implements TableModelLis
 		Livro livro = livros.get(i);
 		dao.update(livro);
 	}
-
 }
