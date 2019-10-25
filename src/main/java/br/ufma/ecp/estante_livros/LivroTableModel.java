@@ -61,9 +61,6 @@ public class LivroTableModel extends AbstractTableModel implements TableModelLis
 		Livro livro = livros.get(rowIndex);
 
 		switch (columnIndex) {
-		case 0:
-			livro.setCodigo(Integer.parseInt((String) aValue));
-			break;
 		case 1:
 			livro.setNome((String) aValue);
 			break;
@@ -79,7 +76,6 @@ public class LivroTableModel extends AbstractTableModel implements TableModelLis
 	public void tableChanged(TableModelEvent event) {
 		int i = event.getFirstRow();
 		Livro livro = livros.get(i);
-		System.out.println(i);
 		dao.update(livro);
 	}
 

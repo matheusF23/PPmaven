@@ -67,13 +67,12 @@ public class LivroDAO {
 	}
 	
 	public void update(Livro livro) {
-		String sql = "update livros set codigo = ?, nome = ?, autor = ? where codigo = ?";
+		String sql = "update livros set nome = ?, autor = ? where codigo = ?";
 		try {
 			stmt = conn.prepareStatement(sql);
-			stmt.setLong(1, livro.getCodigo());
-			stmt.setString(2, livro.getNome());
-			stmt.setString(3, livro.getAutor());
-			stmt.setLong(4, livro.getCodigo());
+			stmt.setString(1, livro.getNome());
+			stmt.setString(2, livro.getAutor());
+			stmt.setLong(3, livro.getCodigo());
 			stmt.execute();
 			System.out.println("Atualizado com sucesso!");
 			stmt.close();

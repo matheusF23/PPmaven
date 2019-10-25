@@ -9,15 +9,15 @@ public class FrameTable extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	public FrameTable() {
+	
+	public FrameTable(LivroDAO dao) {
 		super("Livros");
-		LivroDAO dao = new LivroDAO();
 		LivroTableModel tm = new LivroTableModel(dao);
 		JTable t = new JTable(tm);
 		JScrollPane scroll = new JScrollPane();
 		scroll.setViewportView(t);
 		add(scroll);
-		setSize(600, 250);
+		setSize(800, 250);
+		setLocationRelativeTo(null); // Centraliza o Jframe
 	}
 }
