@@ -5,6 +5,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class FrameTable extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public FrameTable() {
 		super("Livros");
 		LivroDAO dao = new LivroDAO();
