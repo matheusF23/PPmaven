@@ -147,7 +147,7 @@ public class FrameLivro extends JFrame {
 	}
 
 	private String listLivros() {
-		List<Livro> livros = dao.recuperarLivros();
+		List<Livro> livros = dao.readLivros();
 		String listLivros = "";
 		for (Livro l : livros) {
 			String temp = "Codigo: " + Integer.toString(l.getCodigo()) + ". Nome: " + l.getNome() + ". Autor: "

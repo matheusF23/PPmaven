@@ -49,20 +49,21 @@ public class LivroDAO {
 		}
 	}
 
-	public List<Livro> recuperarLivros() {
+	public List<Livro> readLivros() {
+		List<Livro> livros = new ArrayList<Livro>();
+		String sql = "select * from livros";
 		try {
-			List<Livro> result = new ArrayList<Livro>();
-			String sql = "select * from livros";
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				result.add(new Livro(rs.getInt("codigo"), rs.getString("nome"), rs.getString("autor")));
+				livros.add(new Livro(rs.getInt("codigo"), rs.getString("nome"), rs.getString("autor")));
 			}
-			return result;
+			stmt.close();
+			//return livros;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return livros;
 	}
 
 }
