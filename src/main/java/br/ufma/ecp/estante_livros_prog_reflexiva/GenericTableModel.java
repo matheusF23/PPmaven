@@ -1,6 +1,6 @@
 package br.ufma.ecp.estante_livros_prog_reflexiva;
 
-import java.util.ArrayList;
+import java.lang.reflect.Field;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
@@ -11,7 +11,7 @@ public class GenericTableModel<T> extends AbstractTableModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private AbstractDAO<T> dao;
 	private List<T> values;
 
@@ -19,15 +19,21 @@ public class GenericTableModel<T> extends AbstractTableModel {
 		this.dao = dao;
 		values = dao.read();
 	}
-
+	
 	public int getRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return values.size();
 	}
-
+	
 	public int getColumnCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		Object obj = values.get(0);
+		Class c = obj.getClass();
+		int count = 0;
+		for (Field f : c.getDeclaredFields()) {
+			if (f.isAnnotationPresent(CollumnAnnotation.class)) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex) {

@@ -5,7 +5,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 
 @Retention(RUNTIME)
-public @interface ColumnAnnotation {
+public @interface CollumnAnnotation {
 	String nome();
 	int posicao();
 

@@ -1,8 +1,13 @@
 package br.ufma.ecp.estante_livros;
 
+import br.ufma.ecp.estante_livros_prog_reflexiva.CollumnAnnotation;
+
 public class Livro {
+	@CollumnAnnotation(nome = "Código", posicao = 0)
 	private int codigo;
+	@CollumnAnnotation(nome = "Nome", posicao = 1)
 	private String nome;
+	@CollumnAnnotation(nome = "Autor", posicao = 2)
 	private String autor;
 
 	public Livro(int codigo, String nome, String autor) {
