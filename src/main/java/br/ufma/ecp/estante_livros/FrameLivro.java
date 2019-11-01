@@ -98,7 +98,7 @@ public class FrameLivro extends JFrame {
 
 		btnMostraLivro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FrameTable frame = new FrameTable(dao);
+				FrameTable frame = new FrameTable();
 				frame.setVisible(true);
 			}
 		});
