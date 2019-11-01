@@ -64,4 +64,18 @@ public class GenericTableModel<T> extends AbstractTableModel {
 		return null;
 	}
 
+	public String getColumnName(int column) {
+		Object obj = values.get(0);
+		Class c = obj.getClass();
+		for (Field f : c.getDeclaredFields()) {
+			if (f.isAnnotationPresent(ColumnAnnotation.class)) {
+				ColumnAnnotation a = f.getDeclaredAnnotation(ColumnAnnotation.class);
+				if (a.posicao() == column) {
+					return a.nome();
+				}
+			}
+		}
+		return null;
+	}
+
 }
