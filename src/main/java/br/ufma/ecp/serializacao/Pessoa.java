@@ -6,11 +6,11 @@ public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String nome;
-    private String cpf;
-    private int idade;
-    private double altura;
-	
-    public Pessoa(String nome, String cpf, int idade, double altura) {
+	private String cpf;
+	private int idade;
+	private double altura;
+
+	public Pessoa(String nome, String cpf, int idade, double altura) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
