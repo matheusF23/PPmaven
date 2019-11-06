@@ -5,7 +5,8 @@ public class App {
 	public static void main(String[] args) {
 		Serializacao s = new Serializacao();
 		
-		s.binSerialization();
+		//s.binSerializa();
+		s.binDeserializa();
 	}
 
 }
