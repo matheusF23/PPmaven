@@ -1,5 +1,6 @@
 package br.ufma.ecp.serializacao;
 
+import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,11 +34,10 @@ public class Serializacao {
 			ObjectInputStream entrada = new ObjectInputStream(f);
 			o = (Pessoa) entrada.readObject();
 			entrada.close();
+			System.out.println(o);
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
-
 		}
-		System.out.println(o);
 		System.out.println("concluido");
 	}
 
@@ -49,7 +49,19 @@ public class Serializacao {
 			Pessoa p = new Pessoa("joao", "45454", 30, 1.65);
 			encoder.writeObject(p);
 			encoder.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 
+	// Deserializando
+	public void xmlDeserializa() {
+		try {
+			InputStream f = new FileInputStream("saida.xml");
+			XMLDecoder dec = new XMLDecoder(f);
+			Pessoa p = (Pessoa) dec.readObject();
+			dec.close();
+			System.out.println(p);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

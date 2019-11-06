@@ -7,7 +7,8 @@ public class App {
 
 		// s.binSerializa(); // Serializa no formato bin
 		// s.binDeserializa(); // Deserializa no formato bin
-		s.xmlSerializa(); // Serializa no formato XML
+		// s.xmlSerializa(); // Serializa no formato XML
+		s.xmlDeserializa();
 	}
 
 }
