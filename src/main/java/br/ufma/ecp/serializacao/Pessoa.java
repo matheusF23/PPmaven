@@ -10,6 +10,9 @@ public class Pessoa implements Serializable {
 	private int idade;
 	private double altura;
 
+	public Pessoa() {
+	}
+
 	public Pessoa(String nome, String cpf, int idade, double altura) {
 		super();
 		this.nome = nome;
@@ -54,5 +57,5 @@ public class Pessoa implements Serializable {
 	public String toString() {
 		return "Pessoa [nome=" + nome + ", cpf=" + cpf + ", idade=" + idade + ", altura=" + altura + "]";
 	}
-	
+
 }
