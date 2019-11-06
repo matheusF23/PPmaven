@@ -14,11 +14,9 @@ public class GenericTableModel<T> extends AbstractTableModel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private AbstractDAO<T> dao;
 	private List<T> values;
 
 	public GenericTableModel(AbstractDAO<T> dao) {
-		this.dao = dao;
 		values = dao.read();
 	}
 
@@ -27,8 +25,8 @@ public class GenericTableModel<T> extends AbstractTableModel {
 	}
 
 	public int getColumnCount() {
-		Object obj = values.get(0);
-		Class c = obj.getClass();
+		T obj = values.get(0);
+		Class<? extends Object> c = obj.getClass();
 		int count = 0;
 		for (Field f : c.getDeclaredFields()) {
 			if (f.isAnnotationPresent(ColumnAnnotation.class)) {
@@ -40,7 +38,7 @@ public class GenericTableModel<T> extends AbstractTableModel {
 
 	public Object getValueAt(int row, int column) {
 		T obj = values.get(row);
-		Class c = obj.getClass();
+		Class<? extends Object> c = obj.getClass();
 		Field fields[] = c.getDeclaredFields();
 		for (Field f : fields) {
 			if (f.isAnnotationPresent(ColumnAnnotation.class)) {
@@ -66,7 +64,7 @@ public class GenericTableModel<T> extends AbstractTableModel {
 
 	public String getColumnName(int column) {
 		Object obj = values.get(0);
-		Class c = obj.getClass();
+		Class<? extends Object> c = obj.getClass();
 		for (Field f : c.getDeclaredFields()) {
 			if (f.isAnnotationPresent(ColumnAnnotation.class)) {
 				ColumnAnnotation a = f.getDeclaredAnnotation(ColumnAnnotation.class);
